@@ -1,6 +1,6 @@
 package com.researchspace.licenseserver.model;
 
-import static org.apache.commons.lang.StringUtils.strip;
+import static org.apache.commons.lang3.StringUtils.strip;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
