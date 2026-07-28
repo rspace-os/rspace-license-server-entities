@@ -1,19 +1,19 @@
 package com.researchspace.licenseserver.model;
 
-import static org.apache.commons.lang.StringUtils.strip;
+import static org.apache.commons.lang3.StringUtils.strip;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 /**
  * Basic customer contact details
@@ -122,7 +122,7 @@ public class CustomerContact implements Comparable<CustomerContact> {
   @NotNull
   @NotEmpty(message = "first name cannot be empty")
   @Column(nullable = false, length = 50)
-  @Length(max = MAX_NAME_LENGTH, message = "Max length is 50 characters")
+  @Size(max = MAX_NAME_LENGTH, message = "Max length is 50 characters")
   @Pattern(regexp = AT_LEAST_ONE_CHAR, message = AT_LEAST_1_CHAR_IN_FIELD_MSG)
   public String getFirstName() {
     return firstName;
@@ -133,7 +133,7 @@ public class CustomerContact implements Comparable<CustomerContact> {
   }
 
   @NotNull
-  @Length(max = MAX_NAME_LENGTH, message = LENGTH_ERROR_MSG)
+  @Size(max = MAX_NAME_LENGTH, message = LENGTH_ERROR_MSG)
   @Column(nullable = false, length = MAX_NAME_LENGTH)
   @NotEmpty(message = "Last name cannot be empty")
   @Pattern(regexp = AT_LEAST_ONE_CHAR, message = AT_LEAST_1_CHAR_IN_FIELD_MSG)
@@ -149,7 +149,7 @@ public class CustomerContact implements Comparable<CustomerContact> {
   @NotNull
   @NotEmpty(message = "email cannot be empty")
   @Column(nullable = false)
-  @Length(max = MAX_NAME_LENGTH, message = LENGTH_ERROR_MSG)
+  @Size(max = MAX_NAME_LENGTH, message = LENGTH_ERROR_MSG)
   @Pattern(regexp = AT_LEAST_ONE_CHAR, message = AT_LEAST_1_CHAR_IN_FIELD_MSG)
   public String getEmail() {
     return email;
@@ -162,7 +162,7 @@ public class CustomerContact implements Comparable<CustomerContact> {
   @NotNull
   @Column(nullable = false, length = 30)
   @NotEmpty(message = "Telephone cannot be empty")
-  @Length(max = 30, message = "Max length is 30 characters")
+  @Size(max = 30, message = "Max length is 30 characters")
   @Pattern(regexp = "^[ext\\d\\-\\s+\\(\\)]+$", message = "Phone number must be numbers, dashes and spaces, 'ext', '+', '(' or ')' only.")
   public String getTelephone() {
     return telephone;
